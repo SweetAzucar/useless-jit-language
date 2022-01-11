@@ -1,5 +1,7 @@
 #include <string>
 
+enum Token;
+
 class Lexer {
     private:
         std::string IdentifierStr; 

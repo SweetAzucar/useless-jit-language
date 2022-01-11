@@ -1,22 +1,5 @@
 #include <string>
-
-// The lexer returns tokens [0-255] if it is an unknown character, otherwise one
-// of these for known things.
-enum Token {
-  tok_eof = -1,
-
-  // commands
-  tok_def = -2,
-  tok_extern = -3,
-
-  // primary
-  tok_identifier = -4,
-  tok_number = -5,
-
-  // error parsing a num
-  tok_num_parsing_err = -6,
-};
-
+#include "token.hpp"
 class Lexer {
     private:
         std::string IdentifierStr; // Filled in if tok_identifier
@@ -46,9 +29,9 @@ class Lexer {
                 // Not using switch cause it would mean having to convert
                 // string into int.
                 if (IdentifierStr == "def")
-                    return tok_def;
+                    return Token::tok_def;
                 if (IdentifierStr == "extern")
-                    return tok_extern;
+                    return Token::tok_extern;
                 return tok_identifier;
             }
             
