@@ -1,0 +1,4 @@
+class PrototypeAST {
+public:
+  PrototypeAST() {}
+};
