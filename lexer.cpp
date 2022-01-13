@@ -29,10 +29,10 @@ class Lexer {
                 // Not using switch cause it would mean having to convert
                 // string into int.
                 if (IdentifierStr == "def")
-                    return Token::tok_def;
+                    return (int)Token::tok_def;
                 if (IdentifierStr == "extern")
-                    return Token::tok_extern;
-                return tok_identifier;
+                    return (int)Token::tok_extern;
+                return (int)Token::tok_identifier;
             }
             
             if (isdigit(LastChar) || LastChar == '.') {   // Number: [0-9.]+
@@ -42,14 +42,14 @@ class Lexer {
                     NumStr += LastChar;
                     LastChar = getchar();
                     if (LastChar == '.' && DotCounter >= 1) {
-                        return tok_num_parsing_err;
+                        return (int)Token::tok_num_parsing_err;
                     } else {
                         DotCounter++;
                     }    
                 } while (isdigit(LastChar) || LastChar == '.');
 
                 NumVal = strtod(NumStr.c_str(), 0);
-                return tok_number;
+                return (int)Token::tok_number;
             }
 
             if (LastChar == '#') {
@@ -63,7 +63,7 @@ class Lexer {
             }
 
             if (LastChar == EOF)
-                return tok_eof;
+                return (int)Token::tok_eof;
 
             // If non of the cases above, just 
             // return the character as its ascii value.

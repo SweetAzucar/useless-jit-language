@@ -4,6 +4,6 @@
 
 class Logger {
     public:
-        std::unique_ptr<ExprAST> LogError(const char *Str);
-        std::unique_ptr<PrototypeAST> LogErrorP(const char *Str);
+        static std::unique_ptr<ExprAST> LogError(const char *Str);
+        static std::unique_ptr<PrototypeAST> LogErrorP(const char *Str);
 };
